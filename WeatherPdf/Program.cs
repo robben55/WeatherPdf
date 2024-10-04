@@ -4,6 +4,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System.Globalization;
 using WeatherPdf.Database.Context;
+using WeatherPdf.DependencyInjection;
 using WeatherPdf.Pdf.Weather.ContentModels;
 using WeatherPdf.Services;
 using WeatherPdf.Settings;
@@ -11,21 +12,7 @@ using WeatherPdf.Settings;
 var builder = WebApplication.CreateBuilder(args);
 QuestPDF.Settings.License = LicenseType.Community;
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddOptions<CosmosSettings>()
-            .BindConfiguration(CosmosSettings.ConfigurationSection)
-            .ValidateDataAnnotations()
-            .ValidateOnStart();
-
-builder.Services.AddDbContext<ApplicationContext>((provider, context) =>
-{
-    var cosmosSettings = provider.GetRequiredService<IOptions<CosmosSettings>>().Value;
-    context.UseCosmos(cosmosSettings.EndPoint, cosmosSettings.SecurityKey, cosmosSettings.Name);
-});
-
-builder.Services.AddTransient<IGeneratePdf, GeneratePdf>();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
