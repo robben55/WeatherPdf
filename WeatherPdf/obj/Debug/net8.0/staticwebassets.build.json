@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dxG0G5HC0E4yGmfqqDmKUozDr+Vz9vEdOqPM0t2DXvk=",
+  "Source": "WeatherPdf",
+  "BasePath": "_content/WeatherPdf",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

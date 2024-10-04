@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("05d5d0dd-0d07-48c9-b48b-385977e61f39")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeatherPdf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1fb1c77516447e7d834af41fb74a2e98e2a00d19")]
 [assembly: System.Reflection.AssemblyProductAttribute("WeatherPdf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeatherPdf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
