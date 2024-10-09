@@ -54,7 +54,8 @@
               "RelativeToolTip": "WeatherPdf\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-05T07:48:34.005Z"
+              "WhenOpened": "2024-10-05T07:48:34.005Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -64,9 +65,10 @@
               "RelativeDocumentMoniker": "WeatherPdf\\Settings\\CosmosSettings.cs",
               "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Settings\\CosmosSettings.cs",
               "RelativeToolTip": "WeatherPdf\\Settings\\CosmosSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T07:48:29.826Z"
+              "WhenOpened": "2024-10-05T07:48:29.826Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -87,9 +89,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Program.cs",
               "RelativeDocumentMoniker": "WeatherPdf\\Program.cs",
-              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Program.cs*",
-              "RelativeToolTip": "WeatherPdf\\Program.cs*",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAACoAAAASAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Program.cs",
+              "RelativeToolTip": "WeatherPdf\\Program.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-04T17:28:52.271Z",
               "EditorCaption": ""

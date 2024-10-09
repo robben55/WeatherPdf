@@ -14,11 +14,6 @@
         "StatusCode": 200
       }
     ],
-    "Tags": [
-      "Todo"
-    ],
-    "EndpointName": "DeleteTodo",
-    "Description": "Deletes the TodoItem with the specified ID from the database.",
-    "Summary": "Deletes a specific TodoItem."
+    "Summary": "It shows weather for previous month"
   }
 ]

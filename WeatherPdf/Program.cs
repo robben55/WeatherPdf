@@ -36,7 +36,7 @@ app.MapGet("monthly-report", async (ApplicationContext context, IGeneratePdf pdf
     };
     var content = pdf.CreatePdf(weatherReport, forHeader).GeneratePdf();
     return Results.File(content, "application/pdf", "weather-report.pdf");
-});
+}).WithSummary("It shows weather for previous month").WithOpenApi();
 
 
 if (app.Environment.IsDevelopment())

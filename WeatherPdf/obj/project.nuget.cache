@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "HF3vMv/jicQ=",
+  "dgSpecHash": "svHBGx/J0CI=",
   "success": true,
   "projectFilePath": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\WeatherPdf.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robbe\\.nuget\\packages\\azure.core\\1.19.0\\azure.core.1.19.0.nupkg.sha512",
-    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.7\\microsoft.aspnetcore.openapi.8.0.7.nupkg.sha512",
+    "C:\\Users\\robbe\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.10\\microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.azure.cosmos\\3.35.4\\microsoft.azure.cosmos.3.35.4.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
     "C:\\Users\\robbe\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
