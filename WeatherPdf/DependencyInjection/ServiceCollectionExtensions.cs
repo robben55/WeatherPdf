@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Services;
+using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
 
 namespace WeatherPdf.DependencyInjection;

@@ -5,7 +5,7 @@ using System.Globalization;
 using WeatherPdf.Database.Context;
 using WeatherPdf.DependencyInjection;
 using WeatherPdf.Pdf.Weather.ContentModels;
-using WeatherPdf.Services;
+using WeatherPdf.Services.Pf;
 
 var builder = WebApplication.CreateBuilder(args);
 QuestPDF.Settings.License = LicenseType.Community;

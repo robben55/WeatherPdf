@@ -7,7 +7,7 @@ using WeatherPdf.Pdf.Weather.Components;
 using WeatherPdf.Pdf.Weather.ContentModels;
 using WeatherPdf.Pdf.Weather.Elements;
 
-namespace WeatherPdf.Services;
+namespace WeatherPdf.Services.Pf;
 
 public class GeneratePdf : IGeneratePdf
 {

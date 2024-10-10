@@ -2,7 +2,7 @@
 using WeatherPdf.Database.Entities;
 using WeatherPdf.Pdf.Weather.ContentModels;
 
-namespace WeatherPdf.Services;
+namespace WeatherPdf.Services.Pf;
 
 public interface IGeneratePdf
 {
