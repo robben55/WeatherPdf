@@ -90,3 +90,5 @@ C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\obj\Debug\net8.0\refint\Weathe
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\obj\Debug\net8.0\WeatherPdf.pdb
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\obj\Debug\net8.0\WeatherPdf.genruntimeconfig.cache
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\obj\Debug\net8.0\ref\WeatherPdf.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\FluentEmail.Core.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\FluentEmail.Smtp.dll

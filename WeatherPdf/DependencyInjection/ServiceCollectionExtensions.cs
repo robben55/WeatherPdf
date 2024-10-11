@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using System.Net;
+using System.Net.Mail;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
@@ -12,6 +14,7 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
+
         services.AddSwaggerGen();
 
         services.AddOptions<CosmosSettings>()
@@ -29,4 +32,25 @@ public static class ServiceCollectionExtensions
 
         return services;
     }
+
+    public static IServiceCollection AddFluentEmail(
+        this IServiceCollection services,
+        IConfigurationSection configuration
+        )
+    {
+        var from = configuration.GetValue<string>("From");
+
+        services.AddFluentEmail(from).AddSmtpSender(new SmtpClient()
+        {
+            Host = configuration.GetValue<string>("Host")!,
+            Port = configuration.GetValue<int>("Port"),
+            EnableSsl = configuration.GetValue<bool>("Ssl"),
+            Credentials = new NetworkCredential(configuration.GetValue<string>("UserName"), configuration.GetValue<string>("Password"))
+        });
+        return services;
+    }
+
+
+
+
 }
