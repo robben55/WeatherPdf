@@ -20,7 +20,7 @@ builder.Services.AddServices().AddFluentEmail(builder.Configuration.GetSection("
 var app = builder.Build();
 
 
-app.MapGet("monthly-report", async (bool? sendEmail, string? yourEmail, ApplicationContext context, IGeneratePdf pdf, IFluentEmail email) =>
+app.MapGet("monthly-report", async (string? yourEmail, ApplicationContext context, IGeneratePdf pdf, IFluentEmail email) =>
 {
     var (startDateTime, endDateTime) = DateHelper.GetPreviousMonthDateRange();
     var weatherReport = await context.WeatherDatas.Where(x => x.SearchedTime >= startDateTime && x.SearchedTime <= endDateTime).ToListAsync();
@@ -32,7 +32,7 @@ app.MapGet("monthly-report", async (bool? sendEmail, string? yourEmail, Applicat
     };
     var content = pdf.CreatePdf(weatherReport, forHeader).GeneratePdf();
 
-    if(sendEmail is not null or false && yourEmail is not null)
+    if(yourEmail is not null)
     {
         await email.To(yourEmail).Subject("Weather report").Body("Tashkent weather report for previous month").Attach(new Attachment
         {
