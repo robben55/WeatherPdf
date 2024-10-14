@@ -1,24 +1,8 @@
 [
   {
-    "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
-    "RelativePath": "hi",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_1",
-    "RelativePath": "monthly-report",
+    "ContainingType": "WeatherPdf.DependencyInjection.RoutesCollection\u002B\u003C\u003Ec",
+    "Method": "\u003CMapReportEndPoints\u003Eb__0_0",
+    "RelativePath": "v1/report/pdf/monthly",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,

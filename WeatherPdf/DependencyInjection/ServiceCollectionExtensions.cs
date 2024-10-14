@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Globalization;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.RateLimiting;
@@ -32,7 +31,6 @@ public static class ServiceCollectionExtensions
         });
 
         services.AddTransient<IGeneratePdf, GeneratePdf>();
-
         services.AddRateLimiter(options =>
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
@@ -42,7 +40,7 @@ public static class ServiceCollectionExtensions
                 options.PermitLimit = 3;
                 options.QueueLimit = 0;
                 options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-            });
+            });            
         });
         return services;
     }
@@ -63,8 +61,5 @@ public static class ServiceCollectionExtensions
         });
         return services;
     }
-
-
-
 
 }
