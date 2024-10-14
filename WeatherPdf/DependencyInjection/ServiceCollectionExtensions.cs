@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using System.Globalization;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
@@ -30,6 +33,17 @@ public static class ServiceCollectionExtensions
 
         services.AddTransient<IGeneratePdf, GeneratePdf>();
 
+        services.AddRateLimiter(options =>
+        {
+            options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+            options.AddFixedWindowLimiter("fixedWindow", options =>
+            {
+                options.Window = TimeSpan.FromMinutes(10);
+                options.PermitLimit = 3;
+                options.QueueLimit = 0;
+                options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+            });
+        });
         return services;
     }
 

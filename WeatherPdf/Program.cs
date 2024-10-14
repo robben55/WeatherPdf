@@ -19,7 +19,6 @@ builder.Services.AddServices().AddFluentEmail(builder.Configuration.GetSection("
 
 var app = builder.Build();
 
-
 app.MapGet("monthly-report", async (string? yourEmail, ApplicationContext context, IGeneratePdf pdf, IFluentEmail email) =>
 {
     var (startDateTime, endDateTime) = DateHelper.GetPreviousMonthDateRange();
@@ -48,7 +47,10 @@ app.MapGet("monthly-report", async (string? yourEmail, ApplicationContext contex
     return Results.File(content, "application/pdf", "weather-report.pdf");
 })
     .WithSummary("It shows weather for previous month")
-    .WithOpenApi();
+    .WithOpenApi()
+    .RequireRateLimiting("fixedWindow");
+
+
 
 
 
@@ -60,6 +62,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRateLimiter();
 app.Run();
 
