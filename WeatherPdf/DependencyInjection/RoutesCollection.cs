@@ -2,11 +2,14 @@
 using FluentEmail.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
+using System.Configuration;
 using System.Globalization;
 using WeatherPdf.Database.Context;
+using WeatherPdf.Dto;
 using WeatherPdf.Pdf.Weather.ContentModels;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
+using static System.Net.WebRequestMethods;
 
 namespace WeatherPdf.DependencyInjection;
 
@@ -18,12 +21,7 @@ public static class RoutesCollection
         {
             var (startDateTime, endDateTime) = DateHelper.GetPreviousMonthDateRange();
             var weatherReport = await context.WeatherDatas.Where(x => x.SearchedTime >= startDateTime && x.SearchedTime <= endDateTime).ToListAsync();
-            var forHeader = new HeaderContent()
-            {
-                From = "1",
-                To = endDateTime.Day.ToString(),
-                Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endDateTime.Month)
-            };
+            var forHeader = new HeaderContent("1", endDateTime.Day.ToString(), CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endDateTime.Month));            
             var content = pdf.CreatePdf(weatherReport, forHeader).GeneratePdf();
 
 
@@ -46,6 +44,20 @@ public static class RoutesCollection
           .WithSummary("It shows weather for previous month")
           .WithOpenApi()
           .RequireRateLimiting("fixedWindow");
+    }
+
+
+
+    public static void MapWeatherEndPoint(this RouteGroupBuilder group)
+    {
+        group.MapGet("/", async (string city, IHttpClientFactory _http, IConfiguration _config) =>
+        {
+            var apiKey = _config.GetValue<string>("WeatherApi");
+            var client = _http.CreateClient("weather");
+            var weatherDto = await client.GetFromJsonAsync<WeatherDto>($"?q={city}&appid={apiKey}&units=metric");
+
+            return Results.Ok(weatherDto);
+        });
     }
 }
 

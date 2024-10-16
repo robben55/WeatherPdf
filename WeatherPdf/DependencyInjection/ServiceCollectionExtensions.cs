@@ -45,6 +45,19 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
+    public static IServiceCollection AddHttpClientForWeatherApi(
+            this IServiceCollection services
+        )
+    {
+        services.AddHttpClient("weather", (httpClient) =>
+        {
+            httpClient.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/weather");
+        });
+
+
+        return services;
+    }
+
     public static IServiceCollection AddFluentEmail(
         this IServiceCollection services,
         IConfigurationSection configuration

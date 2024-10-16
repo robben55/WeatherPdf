@@ -15,12 +15,15 @@ var builder = WebApplication.CreateBuilder(args);
 QuestPDF.Settings.License = LicenseType.Community;
 
 
-builder.Services.AddServices().AddFluentEmail(builder.Configuration.GetSection("Email"));
+builder.Services
+    .AddServices()
+    .AddFluentEmail(builder.Configuration.GetSection("Email"))
+    .AddHttpClientForWeatherApi();
 
 var app = builder.Build();
 
 app.MapGroup("/v1/report/pdf").MapReportEndPoints();
-
+app.MapGroup("v1/weather").MapWeatherEndPoint();
 
 if (app.Environment.IsDevelopment())
 {
