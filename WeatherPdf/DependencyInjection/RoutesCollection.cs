@@ -74,7 +74,7 @@ public static class RoutesCollection
          
             catch (Exception ex)
             {
-                return Results.Problem(ex.Message);
+                return Results.Problem(GetStatusCode.Message(500));
             }
         });
     }
