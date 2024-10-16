@@ -7,6 +7,7 @@ using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
+using WeatherPdf.Utils;
 
 namespace WeatherPdf.DependencyInjection;
 
@@ -18,7 +19,6 @@ public static class ServiceCollectionExtensions
         services.AddEndpointsApiExplorer();
 
         services.AddSwaggerGen();
-
         services.AddOptions<CosmosSettings>()
                     .BindConfiguration(CosmosSettings.ConfigurationSection)
                     .ValidateDataAnnotations()

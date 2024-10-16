@@ -25,6 +25,7 @@ var app = builder.Build();
 app.MapGroup("/v1/report/pdf").MapReportEndPoints();
 app.MapGroup("v1/weather").MapWeatherEndPoint();
 
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

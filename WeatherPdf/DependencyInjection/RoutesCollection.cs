@@ -1,9 +1,12 @@
 ﻿using FluentEmail.Core;
 using FluentEmail.Core.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using System.Configuration;
 using System.Globalization;
+using System.Net;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Dto;
 using WeatherPdf.Pdf.Weather.ContentModels;
@@ -52,14 +55,28 @@ public static class RoutesCollection
     {
         group.MapGet("/", async (string city, IHttpClientFactory _http, IConfiguration _config) =>
         {
-            var apiKey = _config.GetValue<string>("WeatherApi");
-            var client = _http.CreateClient("weather");
-            var weatherDto = await client.GetFromJsonAsync<WeatherDto>($"?q={city}&appid={apiKey}&units=metric");
+            try
+            {
+                var apiKey = _config.GetValue<string>("WeatherApi");
+                var client = _http.CreateClient("weather");
+                var weatherDto = await client.GetFromJsonAsync<WeatherDto>($"?q={city}&appid={apiKey}&units=metric");
+                return Results.Ok(weatherDto);
+            }
 
-            return Results.Ok(weatherDto);
+            catch(HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            {
+                var statusCode = (int)ex.StatusCode!.Value;
+                return Results.NotFound(new
+                {
+                    Message = GetStatusCode.Message(statusCode)
+                });
+            }
+         
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
         });
     }
 }
-
-
 
