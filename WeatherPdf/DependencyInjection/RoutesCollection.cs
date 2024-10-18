@@ -45,8 +45,7 @@ public static class RoutesCollection
             return Results.File(content, "application/pdf", "weather-report.pdf");
         })
           .WithSummary("It shows weather for previous month")
-          .WithOpenApi()
-          .RequireRateLimiting("fixedWindow");
+          .WithOpenApi();
     }
 
 
@@ -63,20 +62,19 @@ public static class RoutesCollection
                 return Results.Ok(weatherDto);
             }
 
-            catch(HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            catch(HttpRequestException ex)
             {
                 var statusCode = (int)ex.StatusCode!.Value;
-                return Results.NotFound(new
+                var message = statusCode switch
                 {
-                    Message = GetStatusCode.Message(statusCode)
-                });
-            }
-         
-            catch (Exception ex)
-            {
-                return Results.Problem(GetStatusCode.Message(500));
-            }
-        });
+                    401 => "Wrong api key",
+                    429 => "Too many requests",
+                    404 => "Wrong specified city name",
+                    _ => "Something wrong happened. Try again later"
+                };
+                return Results.Json(new { Message = message }, statusCode: statusCode);
+            }         
+        }).RequireRateLimiting("fixedWindow");
     }
 }
 
