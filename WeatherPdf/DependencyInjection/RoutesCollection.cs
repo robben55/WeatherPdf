@@ -10,6 +10,7 @@ using System.Net;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Dto;
 using WeatherPdf.Pdf.Weather.ContentModels;
+using WeatherPdf.Services.Caching;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
 using static System.Net.WebRequestMethods;

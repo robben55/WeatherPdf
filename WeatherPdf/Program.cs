@@ -14,11 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 QuestPDF.Settings.License = LicenseType.Community;
 
-
+var services = builder.Configuration;
 builder.Services
     .AddServices()
     .AddFluentEmail(builder.Configuration.GetSection("Email"))
-    .AddHttpClientForWeatherApi();
+    .AddHttpClientForWeatherApi()
+    .AddCaching(services);
 
 var app = builder.Build();
 

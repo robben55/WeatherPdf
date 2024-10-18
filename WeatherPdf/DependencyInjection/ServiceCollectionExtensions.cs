@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
+using WeatherPdf.Services.Caching;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
 using WeatherPdf.Utils;
@@ -17,7 +18,7 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
-
+        services.AddScoped<IRedisCacheService, RedisCacheService>();
         services.AddSwaggerGen();
         services.AddOptions<CosmosSettings>()
                     .BindConfiguration(CosmosSettings.ConfigurationSection)
@@ -42,6 +43,19 @@ public static class ServiceCollectionExtensions
                 options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
             });            
         });
+        return services;
+    }
+
+    public static IServiceCollection AddCaching(
+            this IServiceCollection services, IConfiguration configuration)
+    {
+        var redis = configuration.GetValue<string>("Redis")!;
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = configuration.GetConnectionString(redis);
+            options.InstanceName = "Weather_";
+        });
+
         return services;
     }
 
