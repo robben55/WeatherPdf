@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.RateLimiting;
+﻿using Mapster;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Services.Caching;
+using WeatherPdf.Dto;
+using WeatherPdf.Responses;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
-using WeatherPdf.Utils;
 
 namespace WeatherPdf.DependencyInjection;
 
@@ -17,8 +19,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddServices(
         this IServiceCollection services)
     {
+        services.AddControllers();
         services.AddEndpointsApiExplorer();
-        services.AddScoped<IRedisCacheService, RedisCacheService>();
         services.AddSwaggerGen();
         services.AddOptions<CosmosSettings>()
                     .BindConfiguration(CosmosSettings.ConfigurationSection)
@@ -45,20 +47,6 @@ public static class ServiceCollectionExtensions
         });
         return services;
     }
-
-    public static IServiceCollection AddCaching(
-            this IServiceCollection services, IConfiguration configuration)
-    {
-        var redis = configuration.GetValue<string>("Redis")!;
-        services.AddStackExchangeRedisCache(options =>
-        {
-            options.Configuration = configuration.GetConnectionString(redis);
-            options.InstanceName = "Weather_";
-        });
-
-        return services;
-    }
-
     public static IServiceCollection AddHttpClientForWeatherApi(
             this IServiceCollection services
         )
@@ -86,6 +74,18 @@ public static class ServiceCollectionExtensions
             EnableSsl = configuration.GetValue<bool>("Ssl"),
             Credentials = new NetworkCredential(configuration.GetValue<string>("UserName"), configuration.GetValue<string>("Password"))
         });
+        return services;
+    }
+
+    public static IServiceCollection RegisterMapsterConfiguration(this IServiceCollection services)
+    {
+        TypeAdapterConfig<WeatherResponse, WeatherDto>
+            .NewConfig()
+            .Map(x => x.Country, z => z.Name)
+            .Map(x => x.Temperature, z => z.Main!.Temp)
+            .Map(x => x.Pressure, z => z.Main!.Pressure)
+            .Map(x => x.Humidity, z => z.Main!.Humidity);
+        TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
         return services;
     }
 

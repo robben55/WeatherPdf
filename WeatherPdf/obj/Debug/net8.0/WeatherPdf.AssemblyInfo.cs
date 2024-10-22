@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeatherPdf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5000b380a61409dfd9f0fb20392c84c28845ac6d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce7beea5b6a48ed0b3050bcebb559c442f9dddf1")]
 [assembly: System.Reflection.AssemblyProductAttribute("WeatherPdf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeatherPdf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,19 +1,16 @@
-﻿using FluentEmail.Core;
+﻿using Azure.Core;
+using FluentEmail.Core;
 using FluentEmail.Core.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
-using System.Configuration;
 using System.Globalization;
-using System.Net;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Dto;
+using WeatherPdf.Mappings;
 using WeatherPdf.Pdf.Weather.ContentModels;
+using WeatherPdf.Responses;
 using WeatherPdf.Services.Caching;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
-using static System.Net.WebRequestMethods;
 
 namespace WeatherPdf.DependencyInjection;
 
@@ -49,8 +46,6 @@ public static class RoutesCollection
           .WithOpenApi();
     }
 
-
-
     public static void MapWeatherEndPoint(this RouteGroupBuilder group)
     {
         group.MapGet("/", async (string city, IHttpClientFactory _http, IConfiguration _config) =>
@@ -59,7 +54,7 @@ public static class RoutesCollection
             {
                 var apiKey = _config.GetValue<string>("WeatherApi");
                 var client = _http.CreateClient("weather");
-                var weatherDto = await client.GetFromJsonAsync<WeatherDto>($"?q={city}&appid={apiKey}&units=metric");
+                var weatherDto = await client.GetFromJsonAsync<WeatherResponse>($"?q={city}&appid={apiKey}&units=metric");
                 return Results.Ok(weatherDto);
             }
 
@@ -75,7 +70,7 @@ public static class RoutesCollection
                 };
                 return Results.Json(new { Message = message }, statusCode: statusCode);
             }         
-        }).RequireRateLimiting("fixedWindow");
+        }).RequireRateLimiting("fixedWindow");       
     }
 }
 
