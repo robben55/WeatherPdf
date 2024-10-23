@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WeatherPdf.Dto;
 using WeatherPdf.Mappings;
-using WeatherPdf.Responses;
+using WeatherPdf.Models;
 using WeatherPdf.Services.Caching;
 
 namespace WeatherPdf.Controllers
@@ -26,7 +26,7 @@ namespace WeatherPdf.Controllers
         {
             var apiKey = _config.GetValue<string>("WeatherApi");
             var client = _http.CreateClient("weather");
-            var weatherDto = await client.GetFromJsonAsync<WeatherResponse>($"?q={city}&appid={apiKey}&units=metric");
+            var weatherDto = await client.GetFromJsonAsync<WeatherResponseModel>($"?q={city}&appid={apiKey}&units=metric");
             var mappedWeatherdata = MappingFunctions.CustomMapWeatherToShortInfoDto(weatherDto!);
             return Ok(mappedWeatherdata);   
         }

@@ -1,4 +1,4 @@
-﻿namespace WeatherPdf.Dto;
+﻿namespace WeatherPdf.Models.Dtos;
 
 public class WeatherDto
 {

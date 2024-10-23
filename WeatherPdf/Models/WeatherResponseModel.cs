@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherPdf.Responses;
+namespace WeatherPdf.Models;
 
-public class WeatherResponse
+public class WeatherResponseModel
 {
     [JsonProperty("coord")]
     public Coord? Coord { get; set; }

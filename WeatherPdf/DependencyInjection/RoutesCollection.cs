@@ -6,8 +6,8 @@ using QuestPDF.Fluent;
 using System.Globalization;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Mappings;
+using WeatherPdf.Models;
 using WeatherPdf.Pdf.Weather.ContentModels;
-using WeatherPdf.Responses;
 using WeatherPdf.Services.Caching;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
@@ -54,7 +54,7 @@ public static class RoutesCollection
             {
                 var apiKey = _config.GetValue<string>("WeatherApi");
                 var client = _http.CreateClient("weather");
-                var weatherDto = await client.GetFromJsonAsync<WeatherResponse>($"?q={city}&appid={apiKey}&units=metric");
+                var weatherDto = await client.GetFromJsonAsync<WeatherResponseModel>($"?q={city}&appid={apiKey}&units=metric");
                 return Results.Ok(weatherDto);
             }
 

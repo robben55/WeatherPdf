@@ -7,8 +7,8 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Dto;
-using WeatherPdf.Responses;
+using WeatherPdf.Models;
+using WeatherPdf.Models.Dtos;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Settings;
 
@@ -79,7 +79,7 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection RegisterMapsterConfiguration(this IServiceCollection services)
     {
-        TypeAdapterConfig<WeatherResponse, WeatherDto>
+        TypeAdapterConfig<WeatherResponseModel, WeatherDto>
             .NewConfig()
             .Map(x => x.Country, z => z.Name)
             .Map(x => x.Temperature, z => z.Main!.Temp)
