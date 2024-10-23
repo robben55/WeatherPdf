@@ -1,16 +1,5 @@
-using FluentEmail.Core;
-using FluentEmail.Core.Models;
-using Microsoft.EntityFrameworkCore;
-using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using System.Globalization;
-using WeatherPdf.Database.Context;
 using WeatherPdf.DependencyInjection;
-using WeatherPdf.Mappings;
-using WeatherPdf.Pdf.Weather.ContentModels;
-using WeatherPdf.Responses;
-using WeatherPdf.Services.Pf;
-using WeatherPdf.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 

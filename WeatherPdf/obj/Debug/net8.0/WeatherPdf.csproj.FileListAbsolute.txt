@@ -94,9 +94,3 @@ C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\FluentEmail.C
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\FluentEmail.Smtp.dll
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Mapster.dll
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Mapster.Core.dll
-C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
-C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
-C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\StackExchange.Redis.dll

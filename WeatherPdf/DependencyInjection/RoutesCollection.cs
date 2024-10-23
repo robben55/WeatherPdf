@@ -1,14 +1,11 @@
-﻿using Azure.Core;
-using FluentEmail.Core;
+﻿using FluentEmail.Core;
 using FluentEmail.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using System.Globalization;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Mappings;
 using WeatherPdf.Models;
 using WeatherPdf.Pdf.Weather.ContentModels;
-using WeatherPdf.Services.Caching;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
 

@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using WeatherPdf.Dto;
+﻿using Microsoft.AspNetCore.Mvc;
 using WeatherPdf.Mappings;
 using WeatherPdf.Models;
-using WeatherPdf.Services.Caching;
 
 namespace WeatherPdf.Controllers
 {

@@ -18,7 +18,7 @@
   {
     "ContainingType": "WeatherPdf.DependencyInjection.RoutesCollection\u002B\u003C\u003Ec",
     "Method": "\u003CMapReportEndPoints\u003Eb__0_0",
-    "RelativePath": "v1/report/pdf/monthly",
+    "RelativePath": "v1/pdf-report/monthly",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
@@ -42,28 +42,6 @@
     "ContainingType": "WeatherPdf.DependencyInjection.RoutesCollection\u002B\u003C\u003Ec",
     "Method": "\u003CMapWeatherEndPoint\u003Eb__1_0",
     "RelativePath": "v1/weather/",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "city",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WeatherPdf.DependencyInjection.RoutesCollection\u002B\u003C\u003Ec",
-    "Method": "\u003CMapWeatherEndPoint\u003Eb__1_1",
-    "RelativePath": "v1/weather/mapping",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
