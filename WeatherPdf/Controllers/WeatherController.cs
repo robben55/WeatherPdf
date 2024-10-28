@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeatherPdf.Mappings;
-using WeatherPdf.Models;
+using WeatherPdf.Models.ResponseModels;
 
 namespace WeatherPdf.Controllers
 {

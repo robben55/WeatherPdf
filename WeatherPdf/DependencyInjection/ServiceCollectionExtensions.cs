@@ -7,31 +7,30 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Models;
 using WeatherPdf.Models.Dtos;
+using WeatherPdf.Models.ResponseModels;
 using WeatherPdf.Services.Pf;
-using WeatherPdf.Settings;
 
 namespace WeatherPdf.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddServices(
-        this IServiceCollection services)
+        this IServiceCollection services, IConfiguration config)
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-        services.AddOptions<CosmosSettings>()
-                    .BindConfiguration(CosmosSettings.ConfigurationSection)
-                    .ValidateDataAnnotations()
-                    .ValidateOnStart();
 
-        services.AddDbContext<ApplicationContext>((provider, context) =>
+        /*services.AddDbContext<ApplicationContext>((provider, context) =>
         {
             var cosmosSettings = provider.GetRequiredService<IOptions<CosmosSettings>>().Value;            
             context.UseCosmos(cosmosSettings.EndPoint, cosmosSettings.SecurityKey, cosmosSettings.Name);
-        });
+        });*/
+
+        var connectionString = config.GetValue<string>("DatabaseCredentials");
+        services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connectionString));
+
 
         services.AddTransient<IGeneratePdf, GeneratePdf>();
         services.AddRateLimiter(options =>

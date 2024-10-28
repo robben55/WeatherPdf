@@ -1,6 +1,6 @@
 ﻿using Mapster;
-using WeatherPdf.Models;
 using WeatherPdf.Models.Dtos;
+using WeatherPdf.Models.ResponseModels;
 
 namespace WeatherPdf.Mappings;
 

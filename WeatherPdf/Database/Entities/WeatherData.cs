@@ -2,7 +2,7 @@
 
 public class WeatherData
 {
-    public string Id { get; set; } = string.Empty;
+    public int Id { get; set; }
     public string Country { get; set; } = string.Empty;
     public string Temperature { get; set; } = string.Empty;
     public string Pressure { get; set; } = string.Empty;

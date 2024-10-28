@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using System.Globalization;
 using WeatherPdf.Database.Context;
-using WeatherPdf.Models;
+using WeatherPdf.Models.ResponseModels;
 using WeatherPdf.Pdf.Weather.ContentModels;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
