@@ -16,23 +16,31 @@ namespace WeatherPdf.DependencyInjection;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddServices(
-        this IServiceCollection services, IConfiguration config)
+        this IServiceCollection services)
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+        services.AddTransient<IGeneratePdf, GeneratePdf>();
+        return services;
+    }
 
-        /*services.AddDbContext<ApplicationContext>((provider, context) =>
-        {
-            var cosmosSettings = provider.GetRequiredService<IOptions<CosmosSettings>>().Value;            
-            context.UseCosmos(cosmosSettings.EndPoint, cosmosSettings.SecurityKey, cosmosSettings.Name);
-        });*/
-
+    public static IServiceCollection AddDatabaseService(
+            this IServiceCollection services,
+            IConfiguration config
+        )
+    {
         var connectionString = config.GetValue<string>("DatabaseCredentials");
         services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connectionString));
 
 
-        services.AddTransient<IGeneratePdf, GeneratePdf>();
+        return services;
+    }
+
+    public static IServiceCollection AddRateLimiterService(
+            this IServiceCollection services
+        )
+    {
         services.AddRateLimiter(options =>
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
@@ -42,10 +50,11 @@ public static class ServiceCollectionExtensions
                 options.PermitLimit = 3;
                 options.QueueLimit = 0;
                 options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-            });            
+            });
         });
         return services;
     }
+
     public static IServiceCollection AddHttpClientForWeatherApi(
             this IServiceCollection services
         )

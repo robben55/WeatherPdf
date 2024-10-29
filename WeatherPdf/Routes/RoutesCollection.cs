@@ -9,7 +9,7 @@ using WeatherPdf.Pdf.Weather.ContentModels;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
 
-namespace WeatherPdf.DependencyInjection;
+namespace WeatherPdf.Routes;
 
 public static class RoutesCollection
 {
@@ -19,7 +19,7 @@ public static class RoutesCollection
         {
             var (startDateTime, endDateTime) = DateHelper.GetPreviousMonthDateRange();
             var weatherReport = await context.WeatherDatas.Where(x => x.SearchedTime >= startDateTime && x.SearchedTime <= endDateTime).ToListAsync();
-            var forHeader = new HeaderContent("1", endDateTime.Day.ToString(), CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endDateTime.Month));            
+            var forHeader = new HeaderContent("1", endDateTime.Day.ToString(), CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endDateTime.Month));
             var content = pdf.CreatePdf(weatherReport, forHeader).GeneratePdf();
 
 
@@ -55,7 +55,7 @@ public static class RoutesCollection
                 return Results.Ok(weatherDto);
             }
 
-            catch(HttpRequestException ex)
+            catch (HttpRequestException ex)
             {
                 var statusCode = (int)ex.StatusCode!.Value;
                 var message = statusCode switch
@@ -66,8 +66,8 @@ public static class RoutesCollection
                     _ => "Something wrong happened. Try again later"
                 };
                 return Results.Json(new { Message = message }, statusCode: statusCode);
-            }         
-        }).RequireRateLimiting("fixedWindow");       
+            }
+        }).RequireRateLimiting("fixedWindow");
     }
 }
 

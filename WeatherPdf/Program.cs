@@ -1,5 +1,6 @@
 using QuestPDF.Infrastructure;
 using WeatherPdf.DependencyInjection;
+using WeatherPdf.Routes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,10 +8,12 @@ QuestPDF.Settings.License = LicenseType.Community;
 
 var services = builder.Configuration;
 builder.Services
-    .AddServices(services)
+    .AddServices()
+    .AddDatabaseService(services)
     .AddFluentEmail(builder.Configuration.GetSection("Email"))
     .AddHttpClientForWeatherApi()
-    .RegisterMapsterConfiguration();
+    .RegisterMapsterConfiguration()
+    .AddRateLimiterService();
 
 var app = builder.Build();
 
