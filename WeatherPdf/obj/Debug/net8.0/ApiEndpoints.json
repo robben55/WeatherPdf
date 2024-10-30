@@ -1,5 +1,58 @@
 [
   {
+    "ContainingType": "WeatherPdf.Controllers.AuthenticationController",
+    "Method": "EmailVerification",
+    "RelativePath": "api/Authentication/EmailVerification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WeatherPdf.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "api/Authentication/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequest",
+        "Type": "WeatherPdf.Models.Dtos.UserLoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WeatherPdf.Controllers.AuthenticationController",
+    "Method": "Register",
+    "RelativePath": "api/Authentication/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestDto",
+        "Type": "WeatherPdf.Models.Dtos.UserRegistrationRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WeatherPdf.Controllers.WeatherController",
     "Method": "GetWeather",
     "RelativePath": "api/Weather",
@@ -16,7 +69,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WeatherPdf.DependencyInjection.RoutesCollection\u002B\u003C\u003Ec",
+    "ContainingType": "WeatherPdf.Routes.RoutesCollection\u002B\u003C\u003Ec",
     "Method": "\u003CMapReportEndPoints\u003Eb__0_0",
     "RelativePath": "v1/pdf-report/monthly",
     "HttpMethod": "GET",
@@ -39,7 +92,7 @@
     "Summary": "It shows weather for previous month"
   },
   {
-    "ContainingType": "WeatherPdf.DependencyInjection.RoutesCollection\u002B\u003C\u003Ec",
+    "ContainingType": "WeatherPdf.Routes.RoutesCollection\u002B\u003C\u003Ec",
     "Method": "\u003CMapWeatherEndPoint\u003Eb__1_0",
     "RelativePath": "v1/weather/",
     "HttpMethod": "GET",

@@ -1,15 +1,23 @@
 ﻿using Mapster;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
+using System.Text;
+using System.Text.Json;
 using System.Threading.RateLimiting;
 using WeatherPdf.Database.Context;
 using WeatherPdf.Models.Dtos;
 using WeatherPdf.Models.ResponseModels;
+using WeatherPdf.Services.Email;
 using WeatherPdf.Services.Pf;
+using WeatherPdf.Services.Security;
 
 namespace WeatherPdf.DependencyInjection;
 
@@ -22,6 +30,68 @@ public static class ServiceCollectionExtensions
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddTransient<IGeneratePdf, GeneratePdf>();
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddSingleton<TokenGenerator>();
+        return services;
+    }
+
+    public static IServiceCollection AddIdentitySettings(
+        this IServiceCollection services)
+    {
+        services.AddDefaultIdentity<IdentityUser>(options =>
+        {
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequiredLength = 6;
+            options.Password.RequiredUniqueChars = 1;
+
+
+            options.SignIn.RequireConfirmedEmail = true;
+
+            options.Lockout.AllowedForNewUsers = true;
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(4);
+            options.Lockout.MaxFailedAccessAttempts = 5;
+
+            options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+
+            options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+            options.User.RequireUniqueEmail = true;
+
+        }).AddEntityFrameworkStores<ApplicationContext>()
+          .AddPasswordValidator<Services.Security.PasswordValidator<IdentityUser>>();
+
+
+
+        return services;
+    }
+
+    public static IServiceCollection AddAuthenticationSettings(
+        this IServiceCollection services, IConfiguration config)
+    {
+
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+            .AddJwtBearer(x =>
+            {
+                byte[] _key = Encoding.UTF8.GetBytes(config.GetValue<string>("Secret")!);
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(_key.ToArray()),
+                    ValidIssuer = config.GetSection("BearerSection:ValidIssuer").Value,
+                    ValidAudience = config.GetSection("BearerSection:ValidAudience").Value,
+                    ValidateIssuerSigningKey = config.GetValue<bool>("BearerSection:ValidateIssuerSigningKey"),
+                    ValidateLifetime = config.GetValue<bool>("BearerSection:ValidateLifetime"),
+                    ValidateIssuer = config.GetValue<bool>("BearerSection:ValidateIssuer"),
+                    ValidateAudience = config.GetValue<bool>("BearerSection:ValidateAudience")
+                };
+            });
+
         return services;
     }
 
@@ -44,12 +114,61 @@ public static class ServiceCollectionExtensions
         services.AddRateLimiter(options =>
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
-            options.AddFixedWindowLimiter("fixedWindow", options =>
+
+            options.OnRejected = async (context, token) =>
             {
-                options.Window = TimeSpan.FromMinutes(10);
-                options.PermitLimit = 3;
-                options.QueueLimit = 0;
-                options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
+                {
+                    var response = new
+                    {
+                        Reason = "Too many attempts",
+                        TimeLeft = $"{retryAfter} minutes"
+                    };
+
+                    context.HttpContext.Response.ContentType = "application/json";
+                    await context.HttpContext.Response.WriteAsync(JsonSerializer.Serialize(response), cancellationToken: token);
+                }
+                else
+                {
+                    var response = new
+                    {
+                        Reason = "Too many attempts",
+                        TimeLeft = $"{retryAfter} minutes"
+                    };
+
+                    context.HttpContext.Response.ContentType = "application/json";
+                    await context.HttpContext.Response.WriteAsync(JsonSerializer.Serialize(response), cancellationToken: token);
+                }
+            };
+
+
+            options.AddPolicy(policyName: "limit", partitioner: httpContext =>
+            {
+                var accessToken = httpContext.Features.Get<IAuthenticateResultFeature>()?
+                              .AuthenticateResult?.Properties?.GetTokenValue("access_token")?.ToString()
+                          ?? string.Empty;
+
+                if (accessToken is not "") //svoy
+                {
+                    return RateLimitPartition.GetFixedWindowLimiter(accessToken, _ =>
+                        new FixedWindowRateLimiterOptions
+                        {
+                            Window = TimeSpan.FromMinutes(1),
+                            PermitLimit = 5,
+                            QueueLimit = 0,
+                            QueueProcessingOrder = QueueProcessingOrder.OldestFirst
+                        });
+                }
+
+
+                return RateLimitPartition.GetFixedWindowLimiter(accessToken, _ =>
+                        new FixedWindowRateLimiterOptions
+                        {
+                            Window = TimeSpan.FromMinutes(5),
+                            PermitLimit = 3,
+                            QueueLimit = 0,
+                            QueueProcessingOrder = QueueProcessingOrder.OldestFirst
+                        });
             });
         });
         return services;

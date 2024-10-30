@@ -4,8 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using System.Globalization;
 using WeatherPdf.Database.Context;
+using WeatherPdf.Mappings;
 using WeatherPdf.Models.ResponseModels;
 using WeatherPdf.Pdf.Weather.ContentModels;
+using WeatherPdf.Services.Email;
 using WeatherPdf.Services.Pf;
 using WeatherPdf.Utils;
 
@@ -30,7 +32,6 @@ public static class RoutesCollection
                     ContentType = "application/pdf",
                     Data = new MemoryStream(content),
                     Filename = $"Report for {endDateTime.Month}th month"
-
                 }).SendAsync();
 
                 return Results.Ok("Email report has been sent to your email");
@@ -52,7 +53,8 @@ public static class RoutesCollection
                 var apiKey = _config.GetValue<string>("WeatherApi");
                 var client = _http.CreateClient("weather");
                 var weatherDto = await client.GetFromJsonAsync<WeatherResponseModel>($"?q={city}&appid={apiKey}&units=metric");
-                return Results.Ok(weatherDto);
+                var mappedWeatherdata = MappingFunctions.CustomMapWeatherToShortInfoDto(weatherDto!);
+                return Results.Ok(mappedWeatherdata);
             }
 
             catch (HttpRequestException ex)

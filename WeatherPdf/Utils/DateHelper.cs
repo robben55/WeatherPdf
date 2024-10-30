@@ -4,17 +4,9 @@ public static class DateHelper
 {
     public static (DateTime startDate, DateTime endDate) GetPreviousMonthDateRange()
     {
-        var currentYear = DateTime.Now.Year;
-        var month = DateTime.Now.Month - 1;
-        if (month == 0)
-        {
-            currentYear--;
-            month = 12;
-        }
-
-        var end = DateTime.DaysInMonth(currentYear, month);
-        var startDateTime = new DateTime(currentYear, month, 1);
-        var endDateTime = new DateTime(currentYear, month, end);
+        var previousMonth = DateTime.UtcNow.AddMonths(-1);
+        var startDateTime = DateTime.SpecifyKind(new DateTime(previousMonth.Year, previousMonth.Month, 1), DateTimeKind.Utc);
+        var endDateTime = DateTime.SpecifyKind(new DateTime(previousMonth.Year, previousMonth.Month, DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month)), DateTimeKind.Utc);
         return (startDateTime, endDateTime);
     }
 }

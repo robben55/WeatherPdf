@@ -150,3 +150,14 @@ C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\ru\Microsoft.
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\WeatherPdf.staticwebassets.runtime.json
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\robbe\source\repos\WeatherPdf\WeatherPdf\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

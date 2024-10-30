@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
+using WeatherPdf.Database.Context;
 using WeatherPdf.DependencyInjection;
 using WeatherPdf.Routes;
+using WeatherPdf.Services.Email;
+using WeatherPdf.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +17,9 @@ builder.Services
     .AddFluentEmail(builder.Configuration.GetSection("Email"))
     .AddHttpClientForWeatherApi()
     .RegisterMapsterConfiguration()
-    .AddRateLimiterService();
+    .AddRateLimiterService()
+    .AddIdentitySettings()
+    .AddAuthenticationSettings(services);
 
 var app = builder.Build();
 

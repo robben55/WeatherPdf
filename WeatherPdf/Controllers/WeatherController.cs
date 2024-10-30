@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using WeatherPdf.Mappings;
 using WeatherPdf.Models.ResponseModels;
 
@@ -19,6 +20,7 @@ namespace WeatherPdf.Controllers
 
 
         [HttpGet]
+        [EnableRateLimiting("limit")]
         public async Task<IActionResult> GetWeather(string city)
         {
             var apiKey = _config.GetValue<string>("WeatherApi");
