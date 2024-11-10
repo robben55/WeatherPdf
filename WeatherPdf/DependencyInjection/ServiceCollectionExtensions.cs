@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Net;
 using System.Net.Mail;
@@ -51,7 +49,7 @@ public static class ServiceCollectionExtensions
             options.SignIn.RequireConfirmedEmail = true;
 
             options.Lockout.AllowedForNewUsers = true;
-            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(4);
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             options.Lockout.MaxFailedAccessAttempts = 5;
 
             options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;

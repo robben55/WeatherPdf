@@ -44,7 +44,7 @@ public static class RoutesCollection
           .WithOpenApi();
     }
 
-    public static void MapWeatherEndPoint(this RouteGroupBuilder group)
+    /*public static void MapWeatherEndPoint(this RouteGroupBuilder group)
     {
         group.MapGet("/", async (string city, IHttpClientFactory _http, IConfiguration _config) =>
         {
@@ -69,7 +69,7 @@ public static class RoutesCollection
                 };
                 return Results.Json(new { Message = message }, statusCode: statusCode);
             }
-        }).RequireRateLimiting("fixedWindow");
-    }
+        });
+    }*/
 }
 

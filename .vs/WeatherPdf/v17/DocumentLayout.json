@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\controllers\\weathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\controllers\\weathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\controllers\\getcityweathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\controllers\\getcityweathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\routes\\routescollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\routes\\routescollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|c:\\users\\robbe\\source\\repos\\weatherpdf\\weatherpdf\\utils\\datehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{287BC8D0-B464-4725-AAAC-A6801ACBC798}|WeatherPdf\\WeatherPdf.csproj|solutionrelative:weatherpdf\\utils\\datehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,27 +51,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WeatherController.cs",
-              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Controllers\\WeatherController.cs",
-              "RelativeDocumentMoniker": "WeatherPdf\\Controllers\\WeatherController.cs",
-              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Controllers\\WeatherController.cs",
-              "RelativeToolTip": "WeatherPdf\\Controllers\\WeatherController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAwB4AAAAIAAAAAAAAAA==",
+              "Title": "GetCityWeatherController.cs",
+              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Controllers\\GetCityWeatherController.cs",
+              "RelativeDocumentMoniker": "WeatherPdf\\Controllers\\GetCityWeatherController.cs",
+              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Controllers\\GetCityWeatherController.cs",
+              "RelativeToolTip": "WeatherPdf\\Controllers\\GetCityWeatherController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAIwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T19:13:28.083Z",
+              "WhenOpened": "2024-11-10T10:37:51.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RoutesCollection.cs",
+              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Routes\\RoutesCollection.cs",
+              "RelativeDocumentMoniker": "WeatherPdf\\Routes\\RoutesCollection.cs",
+              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Routes\\RoutesCollection.cs",
+              "RelativeToolTip": "WeatherPdf\\Routes\\RoutesCollection.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwEUAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T10:36:46.285Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "WeatherPdf\\Controllers\\AuthenticationController.cs",
-              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "WeatherPdf\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAIwMAAAAAFAAAAAAAAAA==",
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAgwAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T19:04:24.428Z",
+              "WhenOpened": "2024-10-30T19:36:37.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DateHelper.cs",
+              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Utils\\DateHelper.cs",
+              "RelativeDocumentMoniker": "WeatherPdf\\Utils\\DateHelper.cs",
+              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Utils\\DateHelper.cs",
+              "RelativeToolTip": "WeatherPdf\\Utils\\DateHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T19:35:15.516Z",
               "EditorCaption": ""
             },
             {
@@ -78,22 +108,9 @@
               "RelativeDocumentMoniker": "WeatherPdf\\Program.cs",
               "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\Program.cs",
               "RelativeToolTip": "WeatherPdf\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T18:59:13.196Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\robbe\\source\\repos\\WeatherPdf\\WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "WeatherPdf\\DependencyInjection\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAnwLcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T18:57:16.478Z",
+              "WhenOpened": "2024-10-30T19:34:59.505Z",
               "EditorCaption": ""
             }
           ]

@@ -1,10 +1,6 @@
-using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
-using WeatherPdf.Database.Context;
 using WeatherPdf.DependencyInjection;
 using WeatherPdf.Routes;
-using WeatherPdf.Services.Email;
-using WeatherPdf.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +20,7 @@ builder.Services
 var app = builder.Build();
 
 app.MapGroup("/v1/pdf-report").MapReportEndPoints();
-app.MapGroup("/v1/weather").MapWeatherEndPoint();
+//app.MapGroup("/v1/weather").MapWeatherEndPoint();
 
 
 if (app.Environment.IsDevelopment())

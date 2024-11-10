@@ -53,9 +53,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WeatherPdf.Controllers.WeatherController",
+    "ContainingType": "WeatherPdf.Controllers.GetCityWeatherController",
     "Method": "GetWeather",
-    "RelativePath": "api/Weather",
+    "RelativePath": "api/GetCityWeather",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -90,27 +90,5 @@
       }
     ],
     "Summary": "It shows weather for previous month"
-  },
-  {
-    "ContainingType": "WeatherPdf.Routes.RoutesCollection\u002B\u003C\u003Ec",
-    "Method": "\u003CMapWeatherEndPoint\u003Eb__1_0",
-    "RelativePath": "v1/weather/",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "city",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
   }
 ]
